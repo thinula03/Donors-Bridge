@@ -1,1 +1,69 @@
-<h1>Recipient Dashboard</h1>
+{% extends 'recipient/base_recipient.html' %}
+
+{% block title %}Recipient Dashboard{% endblock %}
+
+{% block content %}
+<div class="container-fluid">
+  <h2 class="fw-semibold mb-3">👋 Welcome, Recipient!</h2>
+  <p class="text-muted mb-4">Your personalized dashboard to track requests and matches.</p>
+
+  <div class="row g-4">
+    <div class="col-md-4">
+      <div class="card-glass">
+        <div class="d-flex align-items-center">
+          <div class="me-3 fs-3 text-success">📥</div>
+          <div>
+            <h5 class="card-title">Request Donation</h5>
+            <p class="text-muted small mb-2">Make or view donation requests</p>
+            <a href="{{ url_for('routes.recipient_request') }}" class="btn btn-sm btn-outline-success">Request Now</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-4">
+      <div class="card-glass">
+        <div class="d-flex align-items-center">
+          <div class="me-3 fs-3 text-primary">🔗</div>
+          <div>
+            <h5 class="card-title">Matches</h5>
+            <p class="text-muted small mb-2">Compatible donor matches</p>
+            <a href="{{ url_for('routes.recipient_matches') }}" class="btn btn-sm btn-outline-primary">View Matches</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-4">
+      <div class="card-glass">
+        <div class="d-flex align-items-center">
+          <div class="me-3 fs-3 text-secondary">💬</div>
+          <div>
+            <h5 class="card-title">Messages</h5>
+            <p class="text-muted small mb-2">Chat with donors</p>
+            <a href="{{ url_for('routes.recipient_messages') }}" class="btn btn-sm btn-outline-secondary">Open Chat</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row g-4 mt-4">
+    <div class="col-md-6">
+      <div class="card-glass">
+        <h5 class="card-title mb-2">🔔 Notifications</h5>
+        <p class="text-muted small mb-2">Stay informed on match or approval updates</p>
+        <a href="{{ url_for('routes.recipient_notifications') }}" class="btn btn-sm btn-outline-warning">Check Alerts</a>
+      </div>
+    </div>
+
+    <div class="col-md-6">
+      <div class="card-glass">
+        <h5 class="card-title mb-2">👤 Your Profile</h5>
+        <p class="text-muted small mb-2">Update recipient info or preferences</p>
+        <a href="{{ url_for('routes.recipient_profile') }}" class="btn btn-sm btn-outline-dark">Edit Profile</a>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}
