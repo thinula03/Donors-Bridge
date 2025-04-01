@@ -1,14 +1,15 @@
-from flask import Blueprint, render_template, redirect, url_for, session
+from flask import Blueprint, render_template
 import os
 from flask import request, redirect, flash, url_for, session
 from werkzeug.utils import secure_filename
 from app import db
 from .models import User
 from . import db
+from werkzeug.security import generate_password_hash, check_password_hash
 
 routes = Blueprint('routes', __name__)
 
-UPLOAD_FOLDER = 'static/uploads'
+UPLOAD_FOLDER = 'app/static/uploads'
 ALLOWED_EXTENSIONS = {'pdf', 'jpg', 'jpeg', 'png'}
 
 def allowed_file(filename):
@@ -53,6 +54,8 @@ def login():
                     return redirect(url_for('routes.recipient_dashboard'))
                 elif user.role == 'healthcare':
                     return redirect(url_for('routes.staff_dashboard'))
+                elif user.role == 'admin':
+                    return redirect(url_for('routes.admin_dashboard'))
                 else:
                     return redirect(url_for('routes.index'))
             else:
@@ -78,8 +81,13 @@ def register():
         donation_time = request.form.get('donation_time')
         notifications = request.form.get('notifications')
 
+        # Hash the password
+        hashed_password = generate_password_hash(password)
+
         # Step 3 Files
         files = {}
+        os.makedirs(UPLOAD_FOLDER, exist_ok=True)  # Ensure uploads folder exists
+
         for key in ['identity_doc', 'medical_doc', 'residence_doc', 'selfie_doc', 'extra_doc']:
             file = request.files.get(key)
             if file and allowed_file(file.filename):
@@ -96,7 +104,7 @@ def register():
             email=email,
             phone=phone,
             username=username,
-            password=password,  # Hash later!
+            password=hashed_password,  # ✅ Hashed password
             role=role,
             contact_method=contact_method,
             donation_time=donation_time,
@@ -106,14 +114,12 @@ def register():
             residence_doc=files['residence_doc'],
             selfie_doc=files['selfie_doc'],
             extra_doc=files['extra_doc'],
-            is_approved=False  # Default inactive until admin approval
+            is_approved=False
         )
         db.session.add(new_user)
         db.session.commit()
 
         flash('Registration submitted. Please wait for admin approval.', 'success')
-
-        # Redirect to role-based dashboards after login later
         return redirect(url_for('routes.login'))
 
     return render_template('register.html')
