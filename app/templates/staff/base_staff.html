@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>{% block title %}Staff Dashboard{% endblock %}</title>
+  <title>{% block title %}Organization's Dashboard{% endblock %}</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   <!-- Fonts & Bootstrap -->
@@ -76,7 +76,7 @@
 <body>
 
 <div class="sidebar">
-  <h4>Staff Panel</h4>
+  <h4>Organization Panel</h4>
   <a href="{{ url_for('routes.staff_dashboard') }}" class="{% if request.endpoint == 'routes.staff_dashboard' %}active{% endif %}">🏠 Dashboard</a>
   <a href="{{ url_for('routes.staff_verify_requests') }}" class="{% if request.endpoint == 'routes.staff_verify_requests' %}active{% endif %}">✅ Verify Requests</a>
   <a href="{{ url_for('routes.staff_reports') }}" class="{% if request.endpoint == 'routes.staff_reports' %}active{% endif %}">📊 Reports</a>
