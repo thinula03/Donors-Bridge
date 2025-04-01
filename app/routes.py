@@ -22,6 +22,21 @@ def logout():
     session.clear()
     return redirect(url_for('routes.index'))
 
+@routes.route('/how')
+def how():
+    return render_template('how.html')
+
+@routes.route('/donor-ab')
+def donor_ab():
+    return render_template('donor-ab.html')
+
+@routes.route('/recipient-ab')
+def recipient_ab():
+    return render_template('recipient-ab.html')
+
+@routes.route('/about')
+def about():
+    return render_template('about.html')
 
 # ----------------------
 # Donor Routes
