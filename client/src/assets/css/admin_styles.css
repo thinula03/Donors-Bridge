@@ -1,0 +1,224 @@
+/* === Base === */
+body {
+    font-family: 'Inter', sans-serif;
+    background: #f2f4f7;
+    color: #333;
+    margin: 0;
+    padding: 0;
+}
+
+/* === Admin Top Navbar === */
+.admin-navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: #1e1e2f;
+    padding: 20px 40px;
+    color: white;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.1);
+}
+
+.admin-navbar-brand {
+    font-weight: 700;
+    font-size: 1.25rem;
+}
+
+.admin-navbar-links {
+    display: flex;
+    gap: 18px;
+    flex-wrap: wrap;
+}
+
+.admin-nav-link {
+    color: #cfd3dc;
+    font-size: 14px;
+    padding: 8px 12px;
+    border-radius: 8px;
+    text-decoration: none;
+    transition: 0.3s;
+}
+
+.admin-nav-link:hover,
+.admin-nav-link.active {
+    background: rgba(255, 255, 255, 0.05);
+    color: white;
+}
+
+/* === Main Content === */
+.admin-main {
+    padding: 40px;
+    background: #f2f4f7;
+    min-height: 100vh;
+}
+
+/* === Dashboard Cards === */
+.dashboard-cards {
+    display: flex;
+    justify-content: space-between;
+    gap: 30px;
+    flex-wrap: wrap;
+    margin-bottom: 40px;
+}
+
+.dashboard-card {
+    flex: 1 1 30%;
+    background: rgba(255, 255, 255, 0.95);
+    border-radius: 20px;
+    padding: 1.5rem;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.05);
+    backdrop-filter: blur(10px);
+    transition: transform 0.3s ease-in-out;
+}
+
+.dashboard-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.08);
+}
+
+.insight-card {
+    background: rgba(255, 255, 255, 0.95);
+    border-radius: 20px;
+    padding: 2rem;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.05);
+    text-align: center;
+    backdrop-filter: blur(10px);
+}
+
+/* === Responsive === */
+@media (max-width: 992px) {
+    .dashboard-card {
+        flex: 1 1 100%;
+    }
+
+    .admin-main {
+        padding: 20px;
+    }
+
+    .admin-navbar {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .admin-navbar-links {
+        margin-top: 10px;
+        flex-wrap: wrap;
+        gap: 12px;
+    }
+}
+
+.admin-navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: #1e1e2f;
+    padding: 20px 30px;
+    color: white;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.1);
+    flex-wrap: wrap;
+}
+
+.admin-navbar-brand {
+    font-weight: 700;
+    font-size: 1.25rem;
+}
+
+.admin-menu-toggle {
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    color: white;
+    cursor: pointer;
+    display: none;
+}
+
+.admin-navbar-links {
+    display: flex;
+    gap: 18px;
+    flex-wrap: wrap;
+}
+
+.admin-nav-link {
+    color: #cfd3dc;
+    font-size: 14px;
+    padding: 8px 12px;
+    border-radius: 8px;
+    text-decoration: none;
+    transition: 0.3s;
+}
+
+.admin-nav-link:hover,
+.admin-nav-link.active {
+    background: rgba(255, 255, 255, 0.08);
+    color: white;
+}
+
+/* Responsive behavior */
+@media (max-width: 768px) {
+    .admin-menu-toggle {
+        display: block;
+    }
+
+    .admin-navbar-links {
+        display: none;
+        flex-direction: column;
+        width: 100%;
+        margin-top: 1rem;
+    }
+
+    .admin-navbar-links.open {
+        display: flex;
+    }
+
+    .admin-nav-link {
+        padding: 12px 16px;
+        border-radius: 6px;
+    }
+}
+.admin-profile-wrapper {
+    display: flex;
+    gap: 2rem;
+    align-items: flex-start;
+    padding: 2rem;
+    background: rgba(255, 255, 255, 0.95);
+    border-radius: 20px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.05);
+    margin-bottom: 2rem;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+.admin-profile-pic {
+    flex: 0 0 140px;
+    text-align: center;
+}
+
+.admin-profile-pic img {
+    width: 120px;
+    height: 120px;
+    object-fit: cover;
+    border-radius: 50%;
+}
+
+.admin-profile-info {
+    flex: 1;
+}
+
+/* Responsive Fix */
+@media (max-width: 992px) {
+    .admin-profile-wrapper {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+
+    .admin-profile-info {
+        width: 100%;
+    }
+}
+
